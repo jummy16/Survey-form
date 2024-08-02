@@ -11,13 +11,13 @@
     <div>
         <form action=""  method="get">
             <label for="name">Name</label><br/>
-            <input class="input-box" type="text" placeholder="Enter your name" required><br/>
+            <input class="input-box" type="text" placeholder="Enter your name" id="name" required><br/>
 
             <label for="email">Email</label><br/>
-            <input class="input-box" type="email"  placeholder="Enter your name"><br/>
+            <input class="input-box" type="email"  placeholder="Enter your name" id="email"><br/>
 
             <label for="integer">Age</label><br/>
-            <input class="input-box" type="integer" placeholder="Enter your age" required><br/>
+            <input class="input-box" type="integer" placeholder="Enter your age" id="integer" required><br/>
 
             <label>Which option best describes your?</label><br/>
             <select class="input-box">
@@ -36,7 +36,7 @@
             <label>Maybe</label><br/>
 
             <label>Language and framework known (check all that apply)</label><br/>
-            <input type="checkbox">
+            <input type="checkbox" >
             <label>C</label><br/>
 
             <input type="checkbox">
@@ -67,10 +67,12 @@
             <label>Spring</label>
 
             <p>Any comments or suggestion</p>
-            <textarea class="input-box" ></textarea>
+            <textarea class="input-box" id="text"></textarea>
 
-            <input class="input-box submit-color" type="submit">
+            <input class="input-box submit-color" type="submit" id="submits">
         </form>
     </div>
+
+    <script src="form.js"></script>
 </body>
 </html>
