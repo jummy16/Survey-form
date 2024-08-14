@@ -1,59 +1,31 @@
-// document.addEventListener("DOMContentLoaded", 
-//     function handleForm(event) {
-//         event.preventDefault();
+function CustomAlert(message) {
+    const alertContainer = document.createElement('div');
+    alertContainer.className = 'custom-alert';
 
-//         const name = document.getElementById("name").value.trim();
-//         const email = document.getElementById("email").value.trim();
-//         const integer = document.getElementById("integer").value.trim();
-//         const text = document.getElementById("text").value.trim();
-//         const radio = document.querySelector('input[name="question"]:checked').value;
-        // const checkbox = document.querySelector('input[type="checkbox"]:checked').value;
-
-//         function validateEmail(email) {
-//             const regex1 = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-//             return regex1.test(String(email).toLowerCase());
-//         }
+    const alertMessage = document.createElement('p');
+    alertMessage.textContent = message;
     
-//         if (!validateEmail(email)) {
-//             displayError('email', 'Please enter a valid email address.', 3000);
-//             return;
-//         } else {
-//             clearError('email');
-//         }
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'OK';
+    closeButton.className = 'custom-alert-button';
 
-//         const NewUser = {
-//             Name: name,
-//             Email:email,
-//             Age:integer,
-//             radio:radio,
-            // Checkbox: checkbox, 
-//             text:text
-            
-//         }
+    alertContainer.appendChild(alertMessage);
+    alertContainer.appendChild(closeButton);
 
-//         let users = JSON.parse(localStorage.getItem('users')) || [];
+    document.body.appendChild(alertContainer);
 
-//     if (users.some(user => user.email === email)) {
-//         displayError('email', 'This email is already registered.', 3000);
-//         return;
-//     }
-
-//     users.push(NewUser);
-//     localStorage.setItem('users', JSON.stringify(users));
-
-//     CustomAlert('Sign up successful!.', function() {
-//         setTimeout(function(){
-//         },1000)
-//     });
-        
-    
-// })
-// document.getElementById("submits").addEventListener('submit', handleForm);
+    closeButton.addEventListener('click', function() {
+        document.body.removeChild(alertContainer);
+    });
+}
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("submits").addEventListener('submit', function handleForm(event) {
-        event.preventDefault();
+    const contactForm = document.getElementById('contact-form');
+
+    if(contactForm){
+        contactForm.addEventListener('submit', function(event) {
+            event.preventDefault();
 
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -68,13 +40,11 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     
         if (!validateEmail(email)) {
-            displayError('email', 'Please enter a valid email address.', 3000);
+            alert('email', 'Please enter a valid email address.', 3000);
             return;
-        } else {
-            clearError('email');
         }
 
-        const newUser = {
+        const formDetails = {
             Name: name,
             Email: email,
             Age: integer,
@@ -91,18 +61,16 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log(users);
         }
 
-        users.push(newUser);
-        console.log(newUser);
+        users.push(formDetails);
+        // console.log(newUser);
         localStorage.setItem('users', JSON.stringify(users));
         console.log(users);
 
         CustomAlert('Sign up successful!', function() {
-            setTimeout(function() {
-                // Add any additional actions here if needed
-            }, 1000);
+        
         });
 
         // Allow form submission if no errors
         event.target.submit();
     });
-});
+}});
